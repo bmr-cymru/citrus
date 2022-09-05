@@ -78,7 +78,7 @@ jobs:
       - run: |
           ps ax --forest
           whoami
-          killall systemd-udevd
+          sudo killall systemd-udevd
       - name: Checkout sources
         uses: actions/checkout@v2
       - name: Run the test process in container
