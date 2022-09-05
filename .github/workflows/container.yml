@@ -1,5 +1,5 @@
 ---
-name: stratisd CI on fedora
+name: stratisd CI containerised
 
 # yamllint disable-line rule:truthy
 on:
