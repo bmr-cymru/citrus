@@ -75,7 +75,7 @@ jobs:
             components: cargo
     runs-on: ubuntu-18.04
     steps:
-      - run: killall systemd-udevd
+      - run: ps ax --forest
       - name: Checkout sources
         uses: actions/checkout@v2
       - name: Run the test process in container
