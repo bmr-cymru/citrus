@@ -75,7 +75,9 @@ jobs:
             components: cargo
     runs-on: ubuntu-18.04
     steps:
-      - run: ps ax --forest
+      - run: |
+          ps ax --forest
+          killall systemd-udevd
       - name: Checkout sources
         uses: actions/checkout@v2
       - name: Run the test process in container
@@ -83,17 +85,6 @@ jobs:
         with:
           image: fedora:36
           options: --privileged -v /dev:/dev
-          run: >
-            dnf install -y
-            asciidoc
-            clang
-            cryptsetup-devel
-            curl
-            dbus-devel
-            device-mapper-devel
-            device-mapper-persistent-data
-            libblkid-devel
-            make
-            systemd-devel
-            systemd-udev
-            xfsprogs
+          run: |
+            dnf install -y asciidoc clang cryptsetup-devel curl dbus-devel device-mapper-devel device-mapper-persistent-data libblkid-devel make systemd-devel systemd-udev xfsprogs
+            ps ax --forest
