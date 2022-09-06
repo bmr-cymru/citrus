@@ -96,11 +96,13 @@ jobs:
           options: --privileged -v /dev:/dev
           run: make -f Makefile install-release
       - name: Start udev
+        uses: addnab/docker-run-action@v3
         with:
           image: fedora:36
           options: --privileged -v /dev:/dev
           run: /usr/lib/systemd/systemd-udevd &
       - name: Test ${{ matrix.task }} on ${{ matrix.toolchain }} toolchain
+        uses: addnab/docker-run-action@v3
         with:
           image: fedora:36
           options: --privileged -v /dev:/dev
