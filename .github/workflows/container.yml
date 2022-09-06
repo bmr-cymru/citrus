@@ -89,12 +89,18 @@ jobs:
           run: |
             dnf install -y asciidoc clang cryptsetup-devel curl dbus-devel device-mapper-devel device-mapper-persistent-data libblkid-devel make systemd-devel systemd-udev xfsprogs procps-ng
             ps ax --forest
-      - name: Toolchain
-        uses: actions-rs/toolchain@v1
+      - name: Install release
+        uses: addnab/docker-run-action@v3
         with:
           image: fedora:36
           options: --privileged -v /dev:/dev
           run: make -f Makefile install-release
+      - name: Toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          components: ${{ matrix.components }}
+          toolchain: ${{ matrix.toolchain }}
+          override: true
       - name: Start udev
         uses: addnab/docker-run-action@v3
         with:
