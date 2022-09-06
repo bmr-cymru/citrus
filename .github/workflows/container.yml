@@ -87,7 +87,7 @@ jobs:
           image: fedora:36
           options: --privileged -v /dev:/dev
           run: |
-            dnf install -y asciidoc clang cryptsetup-devel curl dbus-devel device-mapper-devel device-mapper-persistent-data libblkid-devel make systemd-devel systemd-udev xfsprogs
+            dnf install -y asciidoc clang cryptsetup-devel curl dbus-devel device-mapper-devel device-mapper-persistent-data libblkid-devel make systemd-devel systemd-udev xfsprogs procps-ng
             ps ax --forest
       - name: Toolchain
         uses: actions-rs/toolchain@v1
