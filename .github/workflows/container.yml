@@ -89,5 +89,3 @@ jobs:
           run: |
             dnf install -y asciidoc clang cryptsetup-devel curl dbus-devel device-mapper-devel device-mapper-persistent-data libblkid-devel make systemd-devel systemd-udev xfsprogs
             ps ax --forest
-          - uses: actions-rs/toolchain@v1
-            run: make -f Makefile install-release
