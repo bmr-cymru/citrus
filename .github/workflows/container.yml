@@ -90,4 +90,6 @@ jobs:
             dnf install -y asciidoc clang cryptsetup-devel curl dbus-devel device-mapper-devel device-mapper-persistent-data libblkid-devel make systemd-devel systemd-udev xfsprogs procps-ng 
             make -f Makefile install-release 
             coproc /usr/lib/systemd/systemd-udevd
+            cd /github/workspace
+            ls
             ${{ matrix.task }} 
