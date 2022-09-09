@@ -82,7 +82,7 @@ jobs:
       - name: Checkout sources
         uses: actions/checkout@v2
       - name: Run the test process in container
-        uses: bmr-cymru/docker-run-action@master
+        uses: bmr-cymru/docker-run-action@main
         with:
           image: fedora:36
           options: --privileged -v /dev:/dev
@@ -90,7 +90,7 @@ jobs:
             dnf install -y asciidoc clang cryptsetup-devel curl dbus-devel device-mapper-devel device-mapper-persistent-data libblkid-devel make systemd-devel systemd-udev xfsprogs procps-ng
             ps ax --forest
       - name: Install release
-        uses: bmr-cymru/docker-run-action@master
+        uses: bmr-cymru/docker-run-action@main
         with:
           image: fedora:36
           options: --privileged -v /dev:/dev
@@ -102,13 +102,13 @@ jobs:
           toolchain: ${{ matrix.toolchain }}
           override: true
       - name: Start udev
-        uses: bmr-cymru/docker-run-action@master
+        uses: bmr-cymru/docker-run-action@main
         with:
           image: fedora:36
           options: --privileged -v /dev:/dev
           run: /usr/lib/systemd/systemd-udevd &
       - name: Test ${{ matrix.task }} on ${{ matrix.toolchain }} toolchain
-        uses: bmr-cymru/docker-run-action@master
+        uses: bmr-cymru/docker-run-action@main
         with:
           image: fedora:36
           options: --privileged -v /dev:/dev
