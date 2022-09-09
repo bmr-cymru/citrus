@@ -91,5 +91,13 @@ jobs:
             make -f Makefile install-release 
             coproc /usr/lib/systemd/systemd-udevd
             cd /github/workspace
+            echo "PWD=$PWD"
+            echo "List PWD"
             ls
+            echo "/proc/mounts is:"
+            cat /proc/mounts
+            echo "List /home"
+            ls /home
+            echo "List /mnt"
+            ls /mnt
             ${{ matrix.task }} 
