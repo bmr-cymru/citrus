@@ -100,4 +100,6 @@ jobs:
             ls /home
             echo "List /mnt"
             ls /mnt
+            echo "OS Release"
+            cat /etc/os-release
             ${{ matrix.task }} 
