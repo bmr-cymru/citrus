@@ -1,0 +1,48 @@
+---
+name: stratisd CI on fedora
+
+# yamllint disable-line rule:truthy
+on:
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - 'CHANGES.txt'
+      - '**/README.md'
+      - 'README_tests.md'
+      - 'tests/**'
+  pull_request:
+    branches:
+      - master
+    paths-ignore:
+      - 'CHANGES.txt'
+      - '**/README.md'
+      - 'README_tests.md'
+      - 'tests/**'
+
+  workflow_dispatch:
+
+jobs:
+  checks:
+    strategy:
+      matrix:
+        include:
+          - task: make -f Makefile clippy
+            toolchain: 1.63.0  # CURRENT DEVELOPMENT RUST TOOLCHAIN
+            components: clippy
+          - task: make -f Makefile build
+            toolchain: 1.63.0  # CURRENT DEVELOPMENT RUST TOOLCHAIN
+            components: cargo
+          - task: make -f Makefile build-min
+            toolchain: 1.63.0  # CURRENT DEVELOPMENT RUST TOOLCHAIN
+            components: cargo
+          - task: make -f Makefile test
+            toolchain: 1.63.0  # CURRENT DEVELOPMENT RUST TOOLCHAIN
+            components: cargo
+    runs-on: ubuntu-18.04
+    uses: bmr-cymru/stratis-fedora-container-action@main
+    with:
+      image: foo
+      options: bar
+      run: |
+        dnf -y install asciidoc
