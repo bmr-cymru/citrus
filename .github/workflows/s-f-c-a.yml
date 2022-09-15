@@ -42,7 +42,4 @@ jobs:
     runs-on: ubuntu-18.04
     uses: bmr-cymru/stratis-fedora-container-action@main
     with:
-      image: foo
-      options: bar
-      run: |
-        dnf -y install asciidoc
+      options: --privileged -v /dev:/dev
