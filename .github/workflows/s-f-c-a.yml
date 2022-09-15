@@ -31,7 +31,7 @@ jobs:
         id: sfca
         uses: bmr-cymru/stratis-fedora-container-action@main
         with:
-          run:
+          runs:
             dnf install -y asciidoc clang cryptsetup-devel curl dbus-devel device-mapper-devel device-mapper-persistent-data libblkid-devel make systemd-devel systemd-udev xfsprogs procps-ng
             cat /etc/os-release
             echo "Hello Stratis World!"
