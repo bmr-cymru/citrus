@@ -24,21 +24,6 @@ on:
 
 jobs:
   checks:
-    strategy:
-      matrix:
-        include:
-          - task: make -f Makefile clippy
-            toolchain: 1.63.0  # CURRENT DEVELOPMENT RUST TOOLCHAIN
-            components: clippy
-          - task: make -f Makefile build
-            toolchain: 1.63.0  # CURRENT DEVELOPMENT RUST TOOLCHAIN
-            components: cargo
-          - task: make -f Makefile build-min
-            toolchain: 1.63.0  # CURRENT DEVELOPMENT RUST TOOLCHAIN
-            components: cargo
-          - task: make -f Makefile test
-            toolchain: 1.63.0  # CURRENT DEVELOPMENT RUST TOOLCHAIN
-            components: cargo
     runs-on: ubuntu-18.04
     uses: bmr-cymru/stratis-fedora-container-action@main
     with:
