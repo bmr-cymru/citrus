@@ -30,7 +30,6 @@ jobs:
       image: fedora:36  # CURRENT DEVELOPMENT ENVIRONMENT
       options: --privileged -v /dev:/dev
     steps:
-      - name: Checkout sources
       - uses: actions/checkout@v2
       - name: Stop host udevd
         run: sudo killall systemd-udevd
