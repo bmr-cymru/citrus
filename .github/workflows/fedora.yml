@@ -26,9 +26,6 @@ jobs:
   # TESTS WITH UDEV
   checks_with_udev:
     runs-on: ubuntu-18.04
-    container:
-      image: fedora:36  # CURRENT DEVELOPMENT ENVIRONMENT
-      options: --privileged -v /dev:/dev
     steps:
       - uses: actions/checkout@v2
       - name: Stop host udevd
